@@ -1,0 +1,18 @@
+proxies:
+  - name: "Circle Access"
+    type: http
+    server: 103.120.150.10
+    port: 8080
+
+proxy-groups:
+  - name: "Auto"
+    type: select
+    proxies:
+      - Circle Access
+
+rules:
+  - DOMAIN-SUFFIX,circleftp.net,Auto
+  - DOMAIN-KEYWORD,ftp,Auto
+  - DOMAIN-SUFFIX,bdixftp.com,Auto
+  - DOMAIN-SUFFIX,google.com,DIRECT
+  - MATCH,Auto
